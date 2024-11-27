@@ -62,6 +62,17 @@ app.post('/filter', upload.single('image'), (req, res, next) => {
             execFileSync('python3', [`${meFilterPath}`, `${fullImagePath}`, `${outPath}`, `${me_s}`]);
             break;
 
+        case 'hpf3x3':
+            const h3Path = path.join(filterDir, 'hpf3x3.py');
+            execFileSync('python3', [`${h3Path}`, `${fullImagePath}`, `${outPath}`]);
+            break;
+
+
+        case 'hpf5x5':
+            const h5Path = path.join(filterDir, 'hpf5x5.py');
+            execFileSync('python3', [`${h5Path}`, `${fullImagePath}`, `${outPath}`]);
+            break;
+
         default:
             next(ExpressError(400, "The specified filter is not supported"));
     }

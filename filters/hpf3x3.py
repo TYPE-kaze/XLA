@@ -1,19 +1,20 @@
 import sys
 import cv2
+import numpy as np
 
 # Paths
 inPath = sys.argv[1]
 outPath = sys.argv[2]
 
-# size of the kernel
-w = int(sys.argv[3])
-h = int(sys.argv[4])
-d = int(sys.argv[5])
 # Load the input image
 image = cv2.imread(inPath)
+# The 3x3 kernel
+kernel = np.array([ [0, -1, 0],
+                    [-1, 5, -1],
+                    [0, -1, 0]])
 
-# Process
-out = cv2.GaussianBlur(image,(w,h),d)
+out = cv2.filter2D(image, -1, kernel)
+#Blue
 
 # finish procesing, write to file
 cv2.imwrite(outPath, out)

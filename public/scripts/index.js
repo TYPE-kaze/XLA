@@ -68,38 +68,6 @@ document
   });
 
 // Image filters
-document.getElementById("threshold").addEventListener("click", () => {
-  canvas.applyPixelTransformation((pixels) => {
-    for (let i = 0; i < pixels.length; i += 4) {
-      const [r, g, b] = getRGB(pixels, i);
-      const v = 0.2126 * r + 0.7152 * g + 0.0722 * b >= 180 ? 255 : 0;
-      pixels[i] = pixels[i + 1] = pixels[i + 2] = v;
-    }
-  });
-});
-
-document.getElementById("sephia").addEventListener("click", () => {
-  canvas.applyPixelTransformation((pixels) => {
-    for (let i = 0; i < pixels.length; i += 4) {
-      const [r, g, b] = getRGB(pixels, i);
-      pixels[i] = r * 0.393 + g * 0.769 + b * 0.189;
-      pixels[i + 1] = r * 0.349 + g * 0.686 + b * 0.168;
-      pixels[i + 2] = r * 0.272 + g * 0.534 + b * 0.131;
-    }
-  });
-});
-
-document.getElementById("invert").addEventListener("click", () => {
-  canvas.applyPixelTransformation((pixels) => {
-    for (let i = 0; i < pixels.length; i += 4) {
-      const [r, g, b] = getRGB(pixels, i);
-      pixels[i] = 255 - r;
-      pixels[i + 1] = 255 - g;
-      pixels[i + 2] = 255 - b;
-    }
-  });
-});
-
 function getRGB(pixel, position) {
   return [pixel[position], pixel[position + 1], pixel[position + 2]];
 }
@@ -134,7 +102,6 @@ document.querySelector('#gaussianModal #perform').addEventListener("click", () =
 const medianModal = new bootstrap.Modal(document.getElementById("medianModal"));
 document.querySelector('#medianModal #perform').addEventListener("click", () => {
   const size = document.querySelector("#medianModal #size").value;
-
   filter("median", { size });
   medianModal.hide();
 });
@@ -153,5 +120,6 @@ document.getElementById("linkDownload").addEventListener("click", (e) => {
   e.currentTarget.setAttribute("href", canvas.getOctetStream());
 });
 
-document.getElementById("test").addEventListener("click", () => { filter("test") })
 document.getElementById("grayscale-py").addEventListener("click", () => { filter("grayscale") })
+document.getElementById("hpf3x3").addEventListener("click", () => { filter("hpf3x3") })
+document.getElementById("hpf5x5").addEventListener("click", () => { filter("hpf5x5") })
