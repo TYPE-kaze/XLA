@@ -84,7 +84,7 @@ document.querySelector('#averageModal #perform').addEventListener("click", () =>
   avgModal.hide();
 });
 
-// Resize modal
+// Gaussian modal
 const gaussianModal = new bootstrap.Modal(document.getElementById("gaussianModal"));
 document.querySelector('#gaussianModal #perform').addEventListener("click", () => {
   const widthInput = document.querySelector("#gaussianModal #width-size");
@@ -106,7 +106,26 @@ document.querySelector('#medianModal #perform').addEventListener("click", () => 
   medianModal.hide();
 });
 
-// History buttons
+// FFT-HPF modal
+const fftHPFModal = new bootstrap.Modal(document.getElementById("fftHPFModal"));
+document.querySelector('#fftHPFModal #perform').addEventListener("click", () => {
+  const size = document.querySelector("#fftHPFModal #size").value;
+  const intensity = document.querySelector("#fftHPFModal #intensity").value;
+  filter("fft-hpf", { size, intensity });
+  fftHPFModal.hide();
+});
+
+// FFT-LPF modal
+const fftLPFModal = new bootstrap.Modal(document.getElementById("fftLPFModal"));
+document.querySelector('#fftLPFModal #perform').addEventListener("click", () => {
+  const size = document.querySelector("#fftLPFModal #size").value;
+  const intensity = document.querySelector("#fftLPFModal #intensity").value;
+  filter("fft-lpf", { size, intensity });
+  fftLPFModal.hide();
+});
+
+
+// History buttons  
 document
   .getElementById("redoButton")
   .addEventListener("click", () => canvas.redo());

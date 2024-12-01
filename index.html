@@ -17,7 +17,7 @@
         <div type="button" data-bs-toggle="modal" data-bs-target="#resolutionModal">
           <li>
             <img src="assets/images/resize.svg" alt="resize icon" />
-            <div class="text">KíchCỡ</div>
+            <div class="text">Kích_Cỡ</div>
           </li>
         </div>
       </div>
@@ -26,7 +26,7 @@
           <div id="dropdownMenu3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <li>
               <img src="assets/images/filter.svg" alt="filter icon" />
-              <div class="text">Lọc</div>
+              <div class="text">Tích_Chập</div>
             </li>
           </div>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
@@ -54,7 +54,26 @@
           </div>
         </div>
       </div>
-
+      <div class="control-item">
+        <div class="dropdown">
+          <div id="dropdownMenu4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li>
+              <img src="assets/images/filter.svg" alt="filter icon" />
+              <div class="text">FFT</div>
+            </li>
+          </div>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu4">
+            <button class="dropdown-item" type="button" id="fft-hpf" data-bs-toggle="modal"
+              data-bs-target="#fftHPFModal">
+              Lọc thông cao
+            </button>
+            <button class="dropdown-item" type="button" id="fft-lpf" data-bs-toggle="modal"
+              data-bs-target="#fftLPFModal">
+              Lọc thông thấp
+            </button>
+          </div>
+        </div>
+      </div>
       <div class="control-item" id="undoButton">
         <li>
           <img src="assets/images/undo.svg" alt="undo icon" />
@@ -224,6 +243,75 @@
     </div>
   </div>
 
+  <!-- Modal for FFT-HPF filter -->
+  <div class="modal fade" id="fftHPFModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">FFT Lọc thông cao</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+        </div>
+        <div class="modal-body">
+          <div id="param">
+            <div class="form-group">
+              <label for="size" class="col-form-label">Kích cỡ</label>
+              <input type="number" class="form-control" id="size" value="50" />
+            </div>
+          </div>
+          <div id="param">
+            <div class="form-group">
+              <label for="intensity" class="col-form-label">Cường độ</label>
+              <input type="number" class="form-control" id="intensity" value="1" />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Đóng
+          </button>
+          <button type="button" class="btn btn-primary" id="perform">
+            Lọc
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for FFT-HPF filter -->
+  <div class="modal fade" id="fftLPFModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">FFT Lọc thông cao</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+        </div>
+        <div class="modal-body">
+          <div id="param">
+            <div class="form-group">
+              <label for="size" class="col-form-label">Kích cỡ</label>
+              <input type="number" class="form-control" id="size" value="50" />
+            </div>
+          </div>
+          <div id="param">
+            <div class="form-group">
+              <label for="intensity" class="col-form-label">Cường độ</label>
+              <input type="number" class="form-control" id="intensity" value="1" />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Đóng
+          </button>
+          <button type="button" class="btn btn-primary" id="perform">
+            Lọc
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>

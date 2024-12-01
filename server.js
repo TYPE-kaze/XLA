@@ -1,5 +1,5 @@
 const path = require('path');
-const { spawnSync, execFileSync } = require('node:child_process')
+const { execFileSync } = require('node:child_process')
 const multer = require('multer');
 const express = require('express');
 const ExpressError = require('./ExpressError')
@@ -34,7 +34,7 @@ app.post('/filter', upload.single('image'), (req, res, next) => {
 
     switch (filter) { //Strict comparation
         case 'test':
-            spawnSync('magick', [`${fullImagePath}`, '-colorspace', 'Gray', `${outPath}`]);
+            execFileSync('magick', [`${fullImagePath}`, '-colorspace', 'Gray', `${outPath}`]);
             // const testFilterPath = path.join(filterDir, 'test.py');
             // spawnSync('python3', [`${testFilterPath}`, '1', '2', '3', 'hello world']);
             break;
@@ -73,8 +73,20 @@ app.post('/filter', upload.single('image'), (req, res, next) => {
             execFileSync('python3', [`${h5Path}`, `${fullImagePath}`, `${outPath}`]);
             break;
 
+        case 'fft-hpf':
+            const fftHpfPath = path.join(filterDir, 'fft_hpf.py');
+            const { intensity: fft_hpf_i, size: fft_hpf_s } = req.body;
+            execFileSync('python3', [`${fftHpfPath}`, `${fullImagePath}`, `${outPath}`, `${fft_hpf_s}`, `${fft_hpf_i}`]);
+            break;
+
+        case 'fft-lpf':
+            const fftLpfPath = path.join(filterDir, 'fft_lpf.py');
+            const { intensity: fft_lpf_i, size: fft_lpf_s } = req.body;
+            execFileSync('python3', [`${fftLpfPath}`, `${fullImagePath}`, `${outPath}`, `${fft_lpf_s}`, `${fft_lpf_i}`]);
+            break;
+
         default:
-            next(ExpressError(400, "The specified filter is not supported"));
+            next(new ExpressError(400, "The specified filter is not supported"));
     }
     // send the processed image back
     res.sendFile(outPath);

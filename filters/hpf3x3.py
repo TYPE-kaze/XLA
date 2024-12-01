@@ -9,9 +9,9 @@ outPath = sys.argv[2]
 # Load the input image
 image = cv2.imread(inPath)
 # The 3x3 kernel
-kernel = np.array([ [0, -1, 0],
-                    [-1, 5, -1],
-                    [0, -1, 0]])
+kernel = np.array([ [ 0, -1, 0],
+                    [-1,  5,-1],
+                    [ 0, -1, 0]])
 
 out = cv2.filter2D(image, -1, kernel)
 #Blue
