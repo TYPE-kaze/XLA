@@ -30,9 +30,6 @@
             </li>
           </div>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
-            <button class="dropdown-item" type="button" id="grayscale-py">
-              Grayscale
-            </button>
             <button class="dropdown-item" type="button" id="average" data-bs-toggle="modal"
               data-bs-target="#averageModal">
               Trung bình
@@ -100,7 +97,7 @@
   <div id="dragAndDropZone" class="img-area text-center">
     <div class="drag-helper">
       <img src="assets/images/dragImg.png" class="img-fluid" />
-      <h5>Drag your picture here to start editing.</h5>
+      <h5>Kéo thả ảnh</h5>
     </div>
     <canvas id="imageProcessed" />
   </div>
@@ -111,7 +108,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Resolution</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Kích thước</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
         </div>
         <div class="modal-body">
@@ -119,25 +116,25 @@
             <div class="form-group">
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" checked="checked" id="checkbox-img-ratio" />
-                <label class="custom-control-label" for="checkbox-img-ratio">Keep the image ratio</label>
+                <label class="custom-control-label" for="checkbox-img-ratio">Giữ tỉ lệ ảnh</label>
               </div>
             </div>
             <div class="form-group">
-              <label for="width-size" class="col-form-label">Width:</label>
+              <label for="width-size" class="col-form-label">Chiều rộng:</label>
               <input type="number" class="form-control" id="width-size" />
             </div>
             <div class="form-group">
-              <label for="height-size" class="col-form-label">Height:</label>
+              <label for="height-size" class="col-form-label">Chiều dài:</label>
               <input type="number" class="form-control" id="height-size" />
             </div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            Close
+            Đóng
           </button>
           <button type="button" class="btn btn-primary" id="saveResolution">
-            Save changes
+            Chỉnh sửa
           </button>
         </div>
       </div>
@@ -284,7 +281,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">FFT Lọc thông cao</h5>
+          <h5 class="modal-title" id="exampleModalLabel">FFT Lọc thông thấp</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
         </div>
         <div class="modal-body">
