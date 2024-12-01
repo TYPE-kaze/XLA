@@ -139,6 +139,5 @@ document.getElementById("linkDownload").addEventListener("click", (e) => {
   e.currentTarget.setAttribute("href", canvas.getOctetStream());
 });
 
-document.getElementById("grayscale-py").addEventListener("click", () => { filter("grayscale") })
 document.getElementById("hpf3x3").addEventListener("click", () => { filter("hpf3x3") })
 document.getElementById("hpf5x5").addEventListener("click", () => { filter("hpf5x5") })
