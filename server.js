@@ -41,48 +41,53 @@ app.post('/filter', upload.single('image'), (req, res, next) => {
 
         case 'grayscale':
             const gsFilterPath = path.join(filterDir, 'grayscale.py');
-            execFileSync('python3', [`${gsFilterPath}`, `${fullImagePath}`, `${outPath}`]);
+            execFileSync('python', [`${gsFilterPath}`, `${fullImagePath}`, `${outPath}`]);
             break;
 
         case 'average':
             const avgFilterPath = path.join(filterDir, 'average.py');
             const { width: w, height: h } = req.body;
-            execFileSync('python3', [`${avgFilterPath}`, `${fullImagePath}`, `${outPath}`, `${w}`, `${h}`]);
+            execFileSync('python', [`${avgFilterPath}`, `${fullImagePath}`, `${outPath}`, `${w}`, `${h}`]);
             break;
 
         case 'gaussian':
             const gauFilterPath = path.join(filterDir, 'gaussian.py');
             const { width: g_w, height: g_h, deviation: g_d } = req.body;
-            execFileSync('python3', [`${gauFilterPath}`, `${fullImagePath}`, `${outPath}`, `${g_w}`, `${g_h}`, `${g_d}`]);
+            execFileSync('python', [`${gauFilterPath}`, `${fullImagePath}`, `${outPath}`, `${g_w}`, `${g_h}`, `${g_d}`]);
             break;
 
         case 'median':
             const meFilterPath = path.join(filterDir, 'median.py');
             const { size: me_s } = req.body;
-            execFileSync('python3', [`${meFilterPath}`, `${fullImagePath}`, `${outPath}`, `${me_s}`]);
+            execFileSync('python', [`${meFilterPath}`, `${fullImagePath}`, `${outPath}`, `${me_s}`]);
             break;
 
         case 'hpf3x3':
             const h3Path = path.join(filterDir, 'hpf3x3.py');
-            execFileSync('python3', [`${h3Path}`, `${fullImagePath}`, `${outPath}`]);
+            execFileSync('python', [`${h3Path}`, `${fullImagePath}`, `${outPath}`]);
             break;
 
 
         case 'hpf5x5':
             const h5Path = path.join(filterDir, 'hpf5x5.py');
-            execFileSync('python3', [`${h5Path}`, `${fullImagePath}`, `${outPath}`]);
+            execFileSync('python', [`${h5Path}`, `${fullImagePath}`, `${outPath}`]);
             break;
 
         case 'fft-hpf':
             const fftHpfPath = path.join(filterDir, 'fft_hpf.py');
             const { intensity: fft_hpf_i, size: fft_hpf_s } = req.body;
-            execFileSync('python3', [`${fftHpfPath}`, `${fullImagePath}`, `${outPath}`, `${fft_hpf_s}`, `${fft_hpf_i}`]);
+            execFileSync('python', [`${fftHpfPath}`, `${fullImagePath}`, `${outPath}`, `${fft_hpf_s}`, `${fft_hpf_i}`]);
             break;
 
         case 'fft-lpf':
             const fftLpfPath = path.join(filterDir, 'fft_lpf.py');
             const { intensity: fft_lpf_i, size: fft_lpf_s } = req.body;
-            execFileSync('python3', [`${fftLpfPath}`, `${fullImagePath}`, `${outPath}`, `${fft_lpf_s}`, `${fft_lpf_i}`]);
+            execFileSync('python', [`${fftLpfPath}`, `${fullImagePath}`, `${outPath}`, `${fft_lpf_s}`, `${fft_lpf_i}`]);
+            break;
+
+        case 'spectrum':
+            const specPath = path.join(filterDir, 'spectrum.py');
+            execFileSync('python', [`${specPath}`, `${fullImagePath}`, `${outPath}`]);
             break;
 
         default:

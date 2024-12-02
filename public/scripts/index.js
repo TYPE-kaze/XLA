@@ -141,3 +141,4 @@ document.getElementById("linkDownload").addEventListener("click", (e) => {
 
 document.getElementById("hpf3x3").addEventListener("click", () => { filter("hpf3x3") })
 document.getElementById("hpf5x5").addEventListener("click", () => { filter("hpf5x5") })
+document.getElementById("spectrum").addEventListener("click", () => { filter("spectrum") })
