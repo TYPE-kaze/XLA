@@ -90,6 +90,12 @@ app.post('/filter', upload.single('image'), (req, res, next) => {
             execFileSync('python', [`${specPath}`, `${fullImagePath}`, `${outPath}`]);
             break;
 
+        case 'fft-gauss':
+            const fftGaussPath = path.join(filterDir, 'fft_gauss.py');
+            const { sigma: fft_gauss_s } = req.body;
+            execFileSync('python', [`${fftGaussPath}`, `${fullImagePath}`, `${outPath}`, `${fft_gauss_s}`]);
+            break;
+
         default:
             next(new ExpressError(400, "The specified filter is not supported"));
     }

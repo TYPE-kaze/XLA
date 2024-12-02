@@ -71,6 +71,10 @@
             <button class="dropdown-item" type="button" id="spectrum">
               Phổ ảnh
             </button>
+            <button class="dropdown-item" type="button" id="fft-gauss" data-bs-toggle="modal"
+              data-bs-target="#fftGaussModal">
+              Gaussian
+            </button>
           </div>
         </div>
       </div>
@@ -278,7 +282,7 @@
     </div>
   </div>
 
-  <!-- Modal for FFT-HPF filter -->
+  <!-- Modal for FFT-LPF filter -->
   <div class="modal fade" id="fftLPFModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
@@ -298,6 +302,35 @@
             <div class="form-group">
               <label for="intensity" class="col-form-label">Cường độ</label>
               <input type="number" class="form-control" id="intensity" value="1" />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Đóng
+          </button>
+          <button type="button" class="btn btn-primary" id="perform">
+            Lọc
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for FFT Gaussian filter -->
+  <div class="modal fade" id="fftGaussModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">FFT Gaussian</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+        </div>
+        <div class="modal-body">
+          <div id="param">
+            <div class="form-group">
+              <label for="intensity" class="col-form-label">Sigma</label>
+              <input type="number" class="form-control" id="sigma" value="50" />
             </div>
           </div>
         </div>

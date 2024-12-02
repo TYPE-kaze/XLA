@@ -2,7 +2,6 @@ import sys
 import numpy as np
 import cv2
 import math
-import matplotlib.pyplot as plt
 
 # Load the input image path and output path from command line arguments
 inPath = sys.argv[1]

@@ -124,6 +124,13 @@ document.querySelector('#fftLPFModal #perform').addEventListener("click", () => 
   fftLPFModal.hide();
 });
 
+const fftGaussModal = new bootstrap.Modal(document.getElementById("fftGaussModal"));
+document.querySelector('#fftGaussModal #perform').addEventListener("click", () => {
+  const sigma = document.querySelector("#fftGaussModal #sigma").value;
+  filter("fft-gauss", { sigma });
+  fftGaussModal.hide();
+});
+
 
 // History buttons  
 document
