@@ -131,6 +131,14 @@ document.querySelector('#fftGaussModal #perform').addEventListener("click", () =
   fftGaussModal.hide();
 });
 
+const fftBPFModal = new bootstrap.Modal(document.getElementById("fftBPFModal"));
+document.querySelector('#fftBPFModal #perform').addEventListener("click", () => {
+  const inR = document.querySelector("#fftBPFModal #inR").value;
+  const outR = document.querySelector("#fftBPFModal #outR").value;
+  const intensity = document.querySelector("#fftBPFModal #intensity").value;
+  filter("fft-bpf", { inR, outR, intensity });
+  fftBPFModal.hide();
+});
 
 // History buttons  
 document

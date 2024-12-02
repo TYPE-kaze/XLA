@@ -96,6 +96,12 @@ app.post('/filter', upload.single('image'), (req, res, next) => {
             execFileSync('python', [`${fftGaussPath}`, `${fullImagePath}`, `${outPath}`, `${fft_gauss_s}`]);
             break;
 
+        case 'fft-bpf':
+            const fftBPFPath = path.join(filterDir, 'fft_gauss.py');
+            const { inR: fft_bpf_i, outR: fft_bpf_o, intensity: fft_bpf_in } = req.body;
+            execFileSync('python', [`${fftBPFPath}`, `${fullImagePath}`, `${outPath}`, `${fft_bpf_i}`, `${fft_bpf_o}`, `${fft_bpf_in}`]);
+            break;
+
         default:
             next(new ExpressError(400, "The specified filter is not supported"));
     }
