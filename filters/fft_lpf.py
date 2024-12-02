@@ -5,8 +5,11 @@ import cv2
 # Load the input image path and output path from command line arguments
 inPath = sys.argv[1]
 outPath = sys.argv[2]
-filter_size = int(sys.argv[3])
+filter_size = float(sys.argv[3])
 intensity = float(sys.argv[4])
+
+if not (0 <= filter_size <= 1):
+    raise ValueError("Filter Size should be a value between 0 and 1.")
 
 if not (0 <= intensity <= 1):
     raise ValueError("Intensity should be a value between 0 and 1.")
@@ -26,7 +29,7 @@ def low_pass_filter(channel, filter_size, intensity = 1):
     rows, cols = channel.shape
     crow, ccol = rows // 2, cols // 2  # Center of the frequency domain
     mask = np.full((rows, cols), 1 - intensity, dtype= np.float32)
-    mask[crow-filter_size:crow+filter_size, ccol-filter_size:ccol+filter_size] = 1
+    mask[crow-(int((1-filter_size)*rows/2)):crow+int((1-filter_size)*rows/2), ccol-int((1-filter_size)*cols/2):ccol+int((1-filter_size)*cols/2)] = 1
 
     # Apply the mask to the shifted frequency domain
     filtered_dft = dft_shifted * mask
