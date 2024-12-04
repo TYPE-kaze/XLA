@@ -5,6 +5,14 @@ import { canvas } from "./canvas.js";
  * @param {object} params params with names and values meant for the specified filter
  */
 export default async (filter, params = {}) => {
+    const oldBlob = await canvas.getBlob();
+    if (!oldBlob) throw new Error("Failed to get blob from canvas.");
+    const objectURL = URL.createObjectURL(oldBlob);
+    const image = new Image();
+    image.src = objectURL;
+    image.onload = () => {
+        canvas.drawImage(image, 'originalImageCanvas');
+    }
     const formData = await makeFormDataForFilter(filter, params);
     const blob = await requestFilter(formData);
     setBlobToCanvas(blob);
@@ -27,7 +35,7 @@ const setBlobToCanvas = (blob) => {
     const image = new Image();
     image.src = objectURL;
     image.onload = () => {
-        canvas.drawImage(image);
+        canvas.drawImage(image, 'processedImageCanvas');
     }
 }
 

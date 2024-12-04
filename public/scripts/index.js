@@ -13,8 +13,8 @@ document.getElementById("dragAndDropZone").addEventListener("drop", (e) => {
     image.src = src;
     image.onload = () => {
       document.querySelector(".drag-helper").classList.add("invisible");
-      document.getElementById("controls").classList.remove("no-events");
-      canvas.drawImage(image);
+      canvas.drawImage(image, 'originalImageCanvas');
+      canvas.drawImage(image, 'processedImageCanvas');
     };
   }
 
@@ -32,10 +32,10 @@ document.getElementById("dragAndDropZone").addEventListener("drop", (e) => {
 });
 
 // Resize modal
-const modal = new bootstrap.Modal(document.getElementById("resolutionModal"));
 document
-  .getElementById("resolutionModal")
-  .addEventListener("show.bs.modal", () => {
+  .getElementById("resolutionModalExpand")
+  .addEventListener("click", (e) => {
+    e.preventDefault();
     const image = new Image();
     const widthInput = document.querySelector("#resolutionModal #width-size");
     const heightInput = document.querySelector("#resolutionModal #height-size");
@@ -62,8 +62,7 @@ document
       image.src = canvas.getOctetStream();
       image.width = widthInput.value;
       image.height = heightInput.value;
-      image.onload = () => canvas.drawImage(image);
-      modal.hide();
+      image.onload = () => canvas.drawImage(image, 'processedImageCanvas');
     });
   });
 
@@ -73,19 +72,16 @@ function getRGB(pixel, position) {
 }
 
 // Resize modal
-const avgModal = new bootstrap.Modal(document.getElementById("averageModal"));
 document.querySelector('#averageModal #perform').addEventListener("click", () => {
   const widthInput = document.querySelector("#averageModal #width-size");
   const heightInput = document.querySelector("#averageModal #height-size");
   const width = widthInput.value;
   const height = heightInput.value;
-
   filter("average", { width, height });
-  avgModal.hide();
+  document.getElementById('')
 });
 
 // Gaussian modal
-const gaussianModal = new bootstrap.Modal(document.getElementById("gaussianModal"));
 document.querySelector('#gaussianModal #perform').addEventListener("click", () => {
   const widthInput = document.querySelector("#gaussianModal #width-size");
   const heightInput = document.querySelector("#gaussianModal #height-size");
@@ -95,7 +91,6 @@ document.querySelector('#gaussianModal #perform').addEventListener("click", () =
   const deviation = deviationInput.value;
 
   filter("gaussian", { width, height, deviation });
-  gaussianModal.hide();
 });
 
 // Median modal
@@ -149,11 +144,11 @@ document
   .addEventListener("click", () => canvas.undo());
 
 // Download
-document.getElementById("linkDownload").addEventListener("click", (e) => {
-  if (canvas.isEmpty()) e.preventDefault();
-  e.currentTarget.setAttribute("href", canvas.getOctetStream());
-});
+// document.getElementById("linkDownload").addEventListener("click", (e) => {
+//   if (canvas.isEmpty()) e.preventDefault();
+//   e.currentTarget.setAttribute("href", canvas.getOctetStream());
+// });
 
-document.getElementById("hpf3x3").addEventListener("click", () => { filter("hpf3x3") })
-document.getElementById("hpf5x5").addEventListener("click", () => { filter("hpf5x5") })
-document.getElementById("spectrum").addEventListener("click", () => { filter("spectrum") })
+document.getElementById("hpf3x3").addEventListener("click", (e) => { e.preventDefault(); filter("hpf3x3") })
+document.getElementById("hpf5x5").addEventListener("click", (e) => { e.preventDefault(); filter("hpf5x5") })
+document.getElementById("spectrum").addEventListener("click", (e) => { e.preventDefault(); filter("spectrum") })

@@ -1,0 +1,211 @@
+/* Global Styles */
+:root {
+  --primary-color: #256ebc;
+  --secondary-color: #6c757d;
+  --background-color: #343a40;
+  --text-color: white;
+  --border-color: #555;
+  --highlight-color: #007bff;
+  --hover-bg-color: #495057;
+  --sub-hover-color: #6c757d;
+  --input-bg-color: #2a2929;
+  --input-focus-bg-color: #333;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.5;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+/* App Layout */
+.appBody {
+  display: grid;
+  grid-template-columns: 1fr 9fr 1fr 3fr;
+  height: 100vh;
+}
+
+/* Main toolbar styling */
+.toolBar {
+  height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+/* Styling for toolbar links */
+.toolBar a {
+  color: var(--text-color);
+  text-decoration: none;
+  display: block;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for toolbar links */
+.toolBar a:hover {
+  background-color: var(--hover-bg-color);
+  padding-left: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Sub-toolbar (nested links) styling */
+.subToolBar a {
+  display: block;
+  padding-left: 30px;
+  font-size: 14px;
+}
+
+/* Hover effect for sub-toolbar links */
+.subToolBar a:hover {
+  background-color: var(--sub-hover-color);
+}
+
+/* Active link styling */
+.toolBar a.active {
+  background-color: var(--highlight-color);
+  color: var(--text-color);
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: var(--highlight-color);
+  border-color: var(--highlight-color);
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: var(--text-color);
+  color: #000;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Form control styling */
+.form-control {
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  border-radius: 4px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-control:focus {
+  background-color: var(--input-focus-bg-color);
+  color: var(--text-color);
+  border-color: #888;
+  box-shadow: none;
+}
+
+/* Undo/Redo Button */
+.undoRedoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.undoRedoButton {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  transition: opacity 0.3s ease;
+}
+
+.undoRedoButton img {
+  width: 25px;
+  height: 25px;
+  filter: invert(1);
+}
+
+.undoRedoButton:hover {
+  opacity: 0.8;
+}
+
+/* Header Styling */
+.header {
+  grid-area: header;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+/* Canvas Wrapper */
+.canvas-wrapper {
+  margin: 10px;
+}
+
+/* Drag and Drop Zone */
+.dragAnDropZone {
+  background-color: rgb(212, 212, 212);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .appBody {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .toolBar {
+    padding: 15px;
+  }
+
+  .header {
+    font-size: 1.2rem;
+  }
+
+  .undoRedoButton {
+    width: 40px;
+    height: 40px;
+  }
+}

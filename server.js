@@ -67,7 +67,6 @@ app.post('/filter', upload.single('image'), (req, res, next) => {
             execFileSync('python', [`${h3Path}`, `${fullImagePath}`, `${outPath}`]);
             break;
 
-
         case 'hpf5x5':
             const h5Path = path.join(filterDir, 'hpf5x5.py');
             execFileSync('python', [`${h5Path}`, `${fullImagePath}`, `${outPath}`]);
@@ -103,6 +102,7 @@ app.post('/filter', upload.single('image'), (req, res, next) => {
             break;
 
         default:
+            console.log(`The name of the filter is: ${filter}`);
             next(new ExpressError(400, "The specified filter is not supported"));
     }
     // send the processed image back
